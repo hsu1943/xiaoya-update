@@ -1,0 +1,5 @@
+xiaoya_dir="/path-to/xiaoya/data"
+alist_dir="/path-to/xiaoya/alist-data"
+container_name="xiaoya"
+keyword="最新数据版本"
+wait_time=60
