@@ -1,7 +1,10 @@
-#!/usr/bin/env bash
+#!/bin/bash
 set -e
 
-source config.txt
+current_path="$(cd "$(dirname "$0")" && pwd)"  
+#echo "脚本所在目录是：$current_path"
+
+source $current_path/config.txt
 
 echo $(date +"%Y-%m-%d %H:%M:%S") " - 开始更新xiaoya容器"
 if docker ps -a | grep -q "$container_name"; then
