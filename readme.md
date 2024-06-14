@@ -34,7 +34,7 @@ keyword="最新数据版本"
 wait_time=60
 
 # 添加可执行权限
-chmod +x update_xiaoya.sh
+chmod +x update.sh
 ```
 
 crontab 定时执行
