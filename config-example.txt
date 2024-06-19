@@ -2,4 +2,4 @@ xiaoya_dir="/path-to/xiaoya/data"
 alist_dir="/path-to/xiaoya/alist-data"
 www_dir="/path-to/xiaoya/www-data"
 keyword="success load storage"
-wait_time=60
+wait_time=120

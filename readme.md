@@ -26,15 +26,15 @@ vim config.txt
 xiaoya_dir="/path-to/xiaoya/data"
 # alist 挂载目录
 alist_dir="/path-to/xiaoya/alist-data"
-# 容器名称
-container_name="xiaoya"
+# www 挂载目录
+www_dir="/path-to/xiaoya/www-data"
 # 更新媒体目录成功匹配日志关键词
-keyword="最新数据版本"
+keyword="success load storage"
 # 更新媒体目录失败后等待多少秒后重启容器再次尝试更新
-wait_time=60
+wait_time=120
 
 # 添加可执行权限
-chmod +x update_xiaoya.sh
+chmod +x update.sh
 ```
 
 crontab 定时执行
