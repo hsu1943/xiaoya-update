@@ -47,6 +47,31 @@ crontab -e
 15 5 * * * /path-to/xiaoya-update/update.sh >> /path-to/xiaoya-update/update.log
 ```
 
+## 备注
+
+如果多次重启依然不更新目录；
+
+检查一下是否可以访问：https://raw.githubusercontent.com/xiaoyaliu00/data/main
+
+如果不能访问，那么就是下载更新文件的网络受阻；
+
+**解决办法：**
+
+1. 在小雅文件目录下，也就是放token的目录下新建`download_url.txt`文件；
+2. 在文件中添加一行`https://xxxxxx/https://raw.githubusercontent.com/xiaoyaliu00/data/main`
+3. 前面的`https://xxxxxx`部分查看在你的网络条件下，从下面找一个可以访问的，替换即可：
+    > https://git.jasonml.xyz
+    >
+    > https://cdn.wygg.shop
+    > 
+    > https://gh.ddlc.top
+    >
+    > https://git.886.be
+    >
+    > https://gh.idayer.com
+    >
+    > https://slink.ltd
+
 ## 执行日志
 
 ```shell
