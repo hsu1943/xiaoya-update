@@ -2,8 +2,10 @@
 
 这是一个为小雅 alist的 docker 部署自动更新镜像，更新媒体目录，清理未使用 volume 的脚本，解决以下几个问题：
 1. 小雅 alist 的 docker 最新镜像的拉取；
-2. 重启容器获取最新媒体库，有时候重启后媒体库为空的问题；
+2. 重启容器获取最新媒体库，有时候重启后媒体库（目录）为空的问题；
 3. 每日更新清理未使用的 volume 问题（改为挂载，重启时清理目录）；
+
+完整代码仓库：[https://github.com/hsu1943/xiaoya-update](https://github.com/hsu1943/xiaoya-update)，代码仓库保持更新，以代码仓库为准。
 
 ## 适用人群
 
@@ -60,6 +62,7 @@ crontab -e
 1. 在小雅文件目录下，也就是放token的目录下新建`download_url.txt`文件；
 2. 在文件中添加一行`https://xxxxxx/https://raw.githubusercontent.com/xiaoyaliu00/data/main`
 3. 前面的`https://xxxxxx`部分查看在你的网络条件下，从下面找一个可以访问的，替换即可：
+
     > https://git.jasonml.xyz
     >
     > https://cdn.wygg.shop
@@ -75,39 +78,52 @@ crontab -e
 ## 执行日志
 
 ```shell
-2024-05-14 05:15:01  - 开始更新xiaoya容器
+2024-06-20 05:15:01 - 开始更新xiaoya容器
 xiaoya
 xiaoya
-Untagged: xiaoyaliu/alist:latest
-Untagged: xiaoyaliu/alist@sha256:6dfaf45136ae29b68c9ab6cd296683898a7bac0d6df68c795a7d45c6cd4caba0
-Deleted: sha256:9de5d0fbc95c1fd040011eb1689bdf7e249451a18e5d844a17dde8109a5bf985
-Deleted: sha256:0c4bb1ff12b0e9dbaabb071ad32c28a996e5e40b3f86e859a9a1f7c9bb4205a4
-Deleted: sha256:8777973b7c47555cc5dda98be4f516ae5a37e7536e2832ca2066ace25c539dbf
-Deleted: sha256:438599dbec72a8506afa335b295650f4b163438241b3edc15c9c080eaecb4bf1
-Deleted: sha256:27eda21ff3c40675cf1447a9372079cbe1e184063b994d978c46da5b4488fba6
-Deleted: sha256:2512c806dd4ea37848e8cef000d6dbb9d0e38b66a68a175ffd3b77b27d95747c
-Deleted: sha256:a393d238e26d257696268ad851615a701a23133579f54d5f2e524fbd520f9833
-Deleted: sha256:41e860c336965122d68e7990205fdc4339609204b58c0abfdb3de585d5ef2a05
-Deleted: sha256:6425e6832ecd1fac46e9bf86a6fe522c8238f768da70fa3997d9f2d6dac8a294
-Deleted: sha256:f4111324080ce5b633fab04c0f3f21b587f2ac10a289cc9e2760c67e0d26711c
-2024-05-14 05:15:11  - 正在拉取最新镜像...
+2024-06-20 05:15:12 - 清空alist临时目录
+latest: Pulling from xiaoyaliu/alist
+3c854c8cbf46: Already exists
+fe0e33dc13e5: Pulling fs layer
+9a4f75e4df14: Pulling fs layer
+eff5472b69d4: Pulling fs layer
+3e6af5d4096a: Pulling fs layer
+45c12b75a75a: Pulling fs layer
+5e5f386b502e: Pulling fs layer
+1fb12090cd60: Pulling fs layer
+4f4fb700ef54: Pulling fs layer
+45c12b75a75a: Waiting
+5e5f386b502e: Waiting
+1fb12090cd60: Waiting
+4f4fb700ef54: Waiting
+3e6af5d4096a: Waiting
+9a4f75e4df14: Download complete
+3e6af5d4096a: Verifying Checksum
+3e6af5d4096a: Download complete
+fe0e33dc13e5: Verifying Checksum
+fe0e33dc13e5: Download complete
+fe0e33dc13e5: Pull complete
+9a4f75e4df14: Pull complete
+45c12b75a75a: Download complete
+eff5472b69d4: Download complete
+eff5472b69d4: Pull complete
+3e6af5d4096a: Pull complete
+45c12b75a75a: Pull complete
+5e5f386b502e: Verifying Checksum
+5e5f386b502e: Download complete
+5e5f386b502e: Pull complete
+1fb12090cd60: Download complete
+1fb12090cd60: Pull complete
+4f4fb700ef54: Verifying Checksum
+4f4fb700ef54: Download complete
+4f4fb700ef54: Pull complete
+Digest: sha256:532cc40d7c3f223ddfca93fd956edd7d1fc53b4a09e8ad2519694a3232c6cc27
+Status: Downloaded newer image for xiaoyaliu/alist:latest
 docker.io/xiaoyaliu/alist:latest
-2024-05-14 05:15:14  - 清空alist临时目录
-2024-05-14 05:15:14  - 容器启动中...
-139c85f01cb00da4968b45b0731df45a94edb27d8164c0ab2e85df1e76ac79f7
-2024-05-14 05:15:14  - 容器已启动，等待 60 秒...
-2024-05-14 05:16:14  - 媒体目录更新检查
-2024-05-14 05:16:14  - 关键字 '最新数据版本' 不存在， 重启容器并等待 60 秒...
-xiaoya
-2024-05-14 05:17:25  - 媒体目录更新检查
-2024-05-14 05:17:25  - 关键字 '最新数据版本' 不存在， 重启容器并等待 60 秒...
-xiaoya
-2024-05-14 05:18:36  - 媒体目录更新检查
-2024-05-14 05:18:36  - 关键字 '最新数据版本' 不存在， 重启容器并等待 60 秒...
-xiaoya
-2024-05-14 05:19:46  - 媒体目录更新检查
-2024-05-14 05:19:46  - 关键字 '最新数据版本' 不存在， 重启容器并等待 60 秒...
-xiaoya
-2024-05-14 05:20:57  - 媒体目录更新检查
-2024-05-14 05:20:57  - 关键字 '最新数据版本' 存在，媒体目录已更新
+2024-06-20 05:15:22 - 容器启动中...
+a000307c07c17db70fcde9fa1f187b4f5faaed40ae480e93732db548db9e969b
+2024-06-20 05:15:22 - 容器已启动，等待 120 秒...
+2024-06-20 05:17:22 - 媒体目录更新检查
+2024-06-20 05:17:22 - 关键字 'success load storage' 存在，媒体目录已更新
+2024-06-20 05:17:22 - 清理未使用的镜像
 ```
