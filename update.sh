@@ -68,4 +68,11 @@ update_and_run_container "$xiaoya_dir" "$alist_dir" "$www_dir" "$keyword" "$wait
 echo "$(date +"%Y-%m-%d %H:%M:%S") - 清理未使用的镜像"
 docker images | grep 'xiaoyaliu/alist' | grep -v 'latest' | awk '{print $3}' | xargs -r docker rmi > /dev/null 2>&1
 
+# 清理日志内容 保留后 1000 行
+cd "$current_path"
+if [ -f "update.log" ]; then
+  tail -n 1000 update.log > temp.log && mv temp.log update.log
+  echo "update.log 文件已清理，保留后 1000 行。"
+fi
+
 exit 0
